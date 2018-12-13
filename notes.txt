@@ -1,0 +1,19 @@
+fix button styling
+nav bar
+search for tags?////
+newsfeed based on likes tags?//
+points for users?likes and comments?
+hero image where prof photo now is
+articles like this one on article page?///
+nightmode?
+ability to delete posts//////////////
+images in circles
+if content is too long .../////
+
+foreign keys
+do any associated objects exist
+destroy and tags
+pluck in irb
+
+
+Use 'when researching' portiion for presentation

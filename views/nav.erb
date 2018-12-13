@@ -1,0 +1,38 @@
+<nav class="">
+  <div class="row nav-row">
+<div class="column">
+  <img  id="icon" src="https://image.freepik.com/free-icon/tumblr-logo_318-42206.jpg" alt="">
+  <input type="search" name="search" placeholder="Search...">
+</div>
+<div class="column">
+  <ul>
+    <li><button type="button" name="home">Home</button></li>
+    <li><button type="button" name="profile">Profile</button></li>
+    <li><button type="button" name="settings">Settings</button></li>
+    <li><button type="button" name="logout">Log out</button></li>
+  </ul>
+
+</div>
+
+  </div>
+</nav>
+<script type="text/javascript">
+  var homeButton = document.querySelector("button[name = 'home']");
+  var profileButton = document.querySelector("button[name = 'profile']");
+  var settingsButton = document.querySelector("button[name = 'settings']");
+  var logoutButton = document.querySelector("button[name = 'logout']");
+
+  homeButton.onclick = function () {
+    location.href = "http://localhost:4567/feed";
+  };
+  profileButton.onclick = function () {
+    location.href = "http://localhost:4567/profile";
+  };
+  settingsButton.onclick = function () {
+    location.href = "http://localhost:4567/settings";
+  };
+  logoutButton.onclick = function () {
+    location.href = "http://localhost:4567/";
+  };
+
+</script>

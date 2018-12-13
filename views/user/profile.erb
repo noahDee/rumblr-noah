@@ -1,0 +1,76 @@
+<!-- <link href="https://unpkg.com/lemoncss/dist/lemon.min.css" rel="stylesheet"> -->
+<%= erb :nav %>
+
+<div class="container">
+  <div class="profile-photo">
+    <img id= "photo" src="http://worldartsme.com/images/slip-clipart-1.jpg" alt="">
+    <h1><%= @user.username%></h1>
+  </div>
+  <div class="row profile-row">
+
+    <div class="bio column">
+      <p>Name: <%= @user.name%></p>
+      <p>Email: <%= @user.email%></p>
+      Likes:
+    </div>
+    <div class="column blank">
+
+    </div>
+    <div class="posts column">
+      <h3 id="block-title"> Your Posts</h3>
+      <button type="button" name="post-reveal">New Post</button>
+      <% Post.find_each do |post|%>
+      <% if post != nil && post.user_id == session[:user_id] %>
+      <blockquote >
+        <h4><a href="http://localhost:4567/post/<%= post.id%>"><%= post.title%></a></h4>
+        <p id="post-content"><%= post.content%></p>
+        <% owner = User.find_by(id: post.user_id)%>
+        <cite><%= "#{owner.username},#{post.created_at.to_s}" %></cite>
+        <cite><%= "Post ID:#{post.id}" %></cite>
+        <button class="options-btn"type="button" name="button">
+          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+        </button>
+      </blockquote>
+        <% end %>
+        <% end %>
+
+      <form class="post-form hidden" action="/profile" method="post">
+        <p>Title</p>
+        <input type="text" name="title"><br>
+        <p>Content</p>
+        <textarea name="content" rows="8" cols="80"></textarea><br>
+        <p>Tags</p>
+        <input type="text" name="tags">
+        <input type="submit" value="Submit">
+        <button type="button" name="cancel">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function postReveal() {
+    console.log('works?');
+    this.classList.add('hidden')
+    let postForm = document.querySelector('.post-form');
+    postForm.classList.remove('hidden');
+    let block = document.querySelector('#block-title');
+    block.innerHTML = 'New Post'
+    postForm.scrollIntoView({behavior: "smooth"});
+
+  }
+
+  function cancelPost() {
+    let postForm = document.querySelector('.post-form');
+    postForm.classList.add('hidden');
+    postButton.classList.remove('hidden')
+    let block = document.querySelector('#block-title');
+    block.innerHTML = 'Your Posts'
+    block.scrollIntoView({behavior: "smooth"});
+  }
+  var postButton = document.querySelector("button[name = 'post-reveal']");
+  postButton.addEventListener('click', postReveal);
+
+  var cancelButton = document.querySelector("button[name = 'cancel']");
+  cancelButton.addEventListener('click', cancelPost)
+
+</script>
