@@ -93,6 +93,7 @@ nav > div > div> input {
 
 .options-btn {
   all:unset !important;
+  color: blue;
 }
 
 footer {
