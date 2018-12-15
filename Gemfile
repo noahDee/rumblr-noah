@@ -1,10 +1,11 @@
 source "https://rubygems.org" do
+  group :test do
   gem 'sinatra-activerecord'
   gem 'rake'
   gem "sqlite3"
   gem 'sinatra'
-  gem 'faker', '~> 1.6', '>= 1.6.6'
-
+  end
+  
   group :development do
     gem "sqlite3"
 
