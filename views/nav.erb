@@ -2,7 +2,13 @@
   <div class="row nav-row">
 <div class="column">
   <img  id="icon" src="https://image.freepik.com/free-icon/tumblr-logo_318-42206.jpg" alt="">
-  <input type="search" name="search" placeholder="Search...">
+  <!-- <form class="" action="index.html" method="post"> -->
+    <input type="search" name="search" placeholder="Search for tags...">
+    <!-- <button type="submit" name="button">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </button> -->
+
+  <!-- </form> -->
 </div>
 <div class="column">
   <ul>
@@ -26,13 +32,13 @@
     location.href = "/feed";
   };
   profileButton.onclick = function () {
-    location.href = "http://localhost:4567/profile";
+    location.href = "/profile";
   };
   settingsButton.onclick = function () {
-    location.href = "http://localhost:4567/settings";
+    location.href = "/settings";
   };
   logoutButton.onclick = function () {
-    location.href = "http://localhost:4567/";
+    location.href = "/";
   };
 
 </script>

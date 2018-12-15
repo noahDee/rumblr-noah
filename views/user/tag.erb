@@ -1,7 +1,7 @@
 <%= erb :nav %>
-<% posts = Post.all %>
 <% @user = User.find_by(id: session[:user_id])%>
 <% tags = @user.tags.split(",")%>
+
 
 <div class="container">
   <div class="row">
@@ -14,27 +14,28 @@
         <a href="/tag/<%= tag%>"><%= tag%></a>
         <% end%>
       </p>
-    </div>
+   </div>
     <div class="column blank">
 
     </div>
     <div class="column feed-column">
-      <h1>Post Feed</h1>
-      <% posts.reverse_each do |post|%>
+      <h1>Posts related to <%= @tag%></h1>
+      <% if @posts.length == 0 %>
+      <p>No posts related to this tag</p>
+      <% else%>
+      <% @posts.reverse_each do |post|%>
       <% if post != nil %>
       <blockquote >
         <h4><a href="/post/<%= post.id%>"><%= post.title%></a></h4>
-        <% if post.content.length > 300%>
-        <p id="post-content"><%="#{post.content[0,293]}..."%></p>
-        <% else%>
-        <p id="post-content"><%="#{post.content}"%></p>
-        <% end%>        <% owner = User.find_by(id: post.user_id)%>
+        <p id="post-content"><%= post.content%></p>
+        <% owner = User.find_by(id: post.user_id)%>
         <cite><%= "#{owner.username},#{post.created_at.to_s}" %></cite>
         <cite><%= "Post ID:#{post.id}" %></cite>
-        <button id="<%= post.user_id%>" class="options-btn"type="button" name="button">
+        <button class="options-btn"type="button" name="button">
           <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
         </button>
       </blockquote>
+        <% end %>
         <% end %>
         <% end %>
 
@@ -43,15 +44,6 @@
           <form action="/deletepost" method="post">
             <input type="text" name="post-id" placeholder="Enter Post ID...">
           <button type="submit" name="button">Delete Post</button>
-          <button type="button" name="button" onclick="location.href='/feed'">Cancel</button>
-        </form>
-        </div>
-
-        <div class="overlay-1"></div>
-        <div class="pop-up-1">
-          <form action="/comment" method="post">
-            <input type="text" name="comment" placeholder="Send a comment...">
-          <button type="submit" name="button">Send</button>
           <button type="button" name="button" onclick="location.href='/feed'">Cancel</button>
         </form>
         </div>
@@ -67,19 +59,12 @@
     btns[i].addEventListener('click', popup)
   }
   function popup() {
-    let id = this.getAttribute('id')
-    if (id == <%= session[:user_id]%>) {
-      var popup = document.querySelector('.pop-up');
-      var over = document.querySelector('.overlay')
-      popup.style.visibility = 'visible';
-      over.style.visibility = 'visible';
-    } else {
     console.log('popup?');
-    var popup = document.querySelector('.pop-up-1');
-    var over = document.querySelector('.overlay-1')
+    var popup = document.querySelector('.pop-up');
+    var over = document.querySelector('.overlay')
     popup.style.visibility = 'visible';
     over.style.visibility = 'visible';
-      }
+
   }
 
 

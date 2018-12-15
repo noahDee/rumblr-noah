@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.date :birthdate
       t.string :password
       t.integer 'posts_count'
+      t.string :photo
+      t.text :tags
     end
 
     create_table :posts do |t|

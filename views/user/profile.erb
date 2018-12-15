@@ -1,17 +1,29 @@
-<!-- <link href="https://unpkg.com/lemoncss/dist/lemon.min.css" rel="stylesheet"> -->
 <%= erb :nav %>
+<% if @user.tags !=nil %>
+<% tags = @user.tags.split(",")%>
+<% else%>
+<% tags = []%>
+<% end%>
+
 
 <div class="container">
   <div class="profile-photo">
-    <img id= "photo" src="http://worldartsme.com/images/slip-clipart-1.jpg" alt="">
+    <img id= "photo" src=<%= "/avitars/#{@user.photo}.png"%> alt="">
     <h1><%= @user.username%></h1>
   </div>
   <div class="row profile-row">
 
     <div class="bio column">
-      <p>Name: <%= @user.name%></p>
-      <p>Email: <%= @user.email%></p>
-      Likes:
+      <p>Name:<br> <%= @user.name%></p>
+      <p>Username:<br> <%= @user.username%></p>
+      <p>Email:<br> <%= @user.email%></p>
+      <p>Birthdate:<br> <%= @user.birthdate%></p>
+      <p>Posts: <br> <%= @user.posts_count%></p>
+      <p>Tags you follow: <br>
+        <% tags.each do |tag|%>
+        <a href="/tag/<%= tag%>"><%= tag%></a>
+        <% end%>
+      </p>
     </div>
     <div class="column blank">
 
@@ -19,11 +31,15 @@
     <div class="posts column">
       <h3 id="block-title"> Your Posts</h3>
       <button type="button" name="post-reveal">New Post</button>
-      <% Post.find_each do |post|%>
+      <% Post.find_each.reverse_each do |post|%>
       <% if post != nil && post.user_id == session[:user_id] %>
       <blockquote >
-        <h4><a href="http://localhost:4567/post/<%= post.id%>"><%= post.title%></a></h4>
-        <p id="post-content"><%= post.content%></p>
+        <h4><a href="/post/<%= post.id%>"><%= post.title%></a></h4>
+        <% if post.content.length > 300%>
+        <p id="post-content"><%="#{post.content[0,293]}..."%></p>
+        <% else%>
+        <p id="post-content"><%="#{post.content}"%></p>
+        <% end%>
         <% owner = User.find_by(id: post.user_id)%>
         <cite><%= "#{owner.username},#{post.created_at.to_s}" %></cite>
         <cite><%= "Post ID:#{post.id}" %></cite>
@@ -34,43 +50,26 @@
         <% end %>
         <% end %>
 
+        <div class="overlay"></div>
+        <div class="pop-up">
+          <form action="/deletepost" method="post">
+            <input type="text" name="post-id" placeholder="Enter Post ID...">
+          <button type="submit" name="button">Delete Post</button>
+          <button type="button" name="button" onclick="location.href='/profile'">Cancel</button>
+        </form>
+        </div>
+
       <form class="post-form hidden" action="/profile" method="post">
-        <p>Title</p>
+        <label>Title</label>
         <input type="text" name="title"><br>
-        <p>Content</p>
+        <label>Content</label>
         <textarea name="content" rows="8" cols="80"></textarea><br>
-        <p>Tags</p>
-        <input type="text" name="tags">
+        <label>Tags</label>
+        <input type="text" name="tags" placeholder="ie.tag1,tag2,tag3...">
         <input type="submit" value="Submit">
         <button type="button" name="cancel">Cancel</button>
       </form>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  function postReveal() {
-    console.log('works?');
-    this.classList.add('hidden')
-    let postForm = document.querySelector('.post-form');
-    postForm.classList.remove('hidden');
-    let block = document.querySelector('#block-title');
-    block.innerHTML = 'New Post'
-    postForm.scrollIntoView({behavior: "smooth"});
-
-  }
-
-  function cancelPost() {
-    let postForm = document.querySelector('.post-form');
-    postForm.classList.add('hidden');
-    postButton.classList.remove('hidden')
-    let block = document.querySelector('#block-title');
-    block.innerHTML = 'Your Posts'
-    block.scrollIntoView({behavior: "smooth"});
-  }
-  var postButton = document.querySelector("button[name = 'post-reveal']");
-  postButton.addEventListener('click', postReveal);
-
-  var cancelButton = document.querySelector("button[name = 'cancel']");
-  cancelButton.addEventListener('click', cancelPost)
-
-</script>
+<script src="/profile.js" charset="utf-8"></script>

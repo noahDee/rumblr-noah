@@ -3,5 +3,15 @@
 
 <h1><%= @post.title %></h1>
 <p><%= @post.content%></p>
+<p>
+Tags:
+<% if @tags == nil %>
+<%=  "none"%>
+<% else%>
+<% @tags.each do |tag|%>
+<a href="/tag/<%= tag%>"><%=  "#{tag}"%></a>
+<% end%>
+<% end%>
+</p>
 
 </div>

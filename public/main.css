@@ -13,34 +13,61 @@ html {
   display: none;
 }
 
+.grid {
+  display: grid!important;
+  grid-template: repeat(2, 200px) / repeat(4, 200px)!important;
+  grid-gap: 15px !important;
+  justify-content: center !important;
+}
+
+.grid > div > img {
+  border: 5px solid black!important;
+  border-radius: 50%!important;
+}
+
 #photo {
-  border: 2px solid black;
-  height: 150px;
-  width: 150px;
+  border: 5px solid black !important;
+  height: 155px;
+  width: 155px;
+  border-radius: 50%;
 }
 
 .bio {
   border: 2px solid black;
   /* float: left; */
   width: 10%;
+  background-color: #D6D5B3;
+  padding: 20px 10px 20px 10px !important;
 }
 
 .posts {
   border: 2px solid black;
   width: 65%;
-  /* float: right;*/
+  background-color: #D6D5B3;
+  padding: 20px 10px 20px 10px !important;
 }
 
 .user-column {
   border: 2px solid black;
   width: 10%;
-  height: 200px;
+  height: 400px;
+  background-color: #D6D5B3;
+  padding: 20px 10px 20px 10px !important;
+}
+
+.avitar {
+  border: 2px solid black !important;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
 }
 
 .feed-column {
   border: 2px solid black;
   width: 65%;
   margin-right: 15%;
+  background-color: #D6D5B3;
+  padding: 20px 10px 20px 10px !important;
 }
 
 #icon {
@@ -92,12 +119,99 @@ nav > div > div> input {
 }
 
 .options-btn {
-  all:unset !important;
-  color: blue;
+  all:unset;
+  padding: 1px;
+  color: black;
+  cursor: pointer;
+  background-color: none;
+}
+
+.options-btn:focus {
+  all:unset;
+  padding: 1px;
+  color: black;
+  cursor: pointer;
+  background-color: none;
+}
+
+.options-btn:hover {
+  all: unset;
+  padding: 1px;
+  cursor: pointer;
+  color: #D6D5B3;
 }
 
 footer {
   background-color: #D6D5B3;
   text-align: center;
   bottom: 0 !important;
+  margin-top: 40%;
+}
+
+.pop-up {
+  background: #D6D5B3;
+  visibility: hidden;
+  margin-top: -50px;
+  margin-left: -50px;
+  border: 2px solid black;
+  z-index: 11;
+  width: 300px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -150px;
+  text-align: center;
+  padding: 10px;
+}
+
+.pop-up button {
+  margin-top : 30px;
+}
+
+.overlay {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+  transition: background .5s;
+}
+
+.pop-up-1 {
+  background: #D6D5B3;
+  visibility: hidden;
+  margin-top: -50px;
+  margin-left: -50px;
+  border: 2px solid black;
+  z-index: 11;
+  width: 300px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -150px;
+  text-align: center;
+  padding: 10px;
+}
+
+.pop-up-1 button {
+  margin-top : 30px;
+}
+
+.overlay-1 {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+  transition: background .5s;
 }

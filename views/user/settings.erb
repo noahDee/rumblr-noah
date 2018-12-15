@@ -1,3 +1,76 @@
-<form class="" action="/settings" method="post">
+<%= erb :nav %>
+
+<div class="container">
+
+<button id="option"class="delete-button"type="button" name="delete-account">Delete Account</button>
+<button id="option"class="tags-button"type="button" name="add-tags">Add Tags</button>
+<button id="option"class="photo-button"type="button" name="change-photo">Change Photo</button>
+
+
+<form class="hidden delete-form" action="/settings" method="post">
+  <h1>Delete Your Account?</h1>
+  <p>Doing so will permanantly delete all your info and posts</p>
   <input type="submit" name="delete" value="Delete Account">
+  <button type="button" name="cancel">Cancel</button>
 </form>
+
+<form class="hidden tags-form" action="/addtags" method="post">
+  <h1>Add Tags</h1>
+  <p>Seperate each tag by a comma</p>
+  <textarea name="tags" rows="8" cols="80"placeholder="tag1,tag2,tag3"></textarea>
+  <input type="submit" value="Submit">
+  <button type="button" name="cancel">Cancel</button>
+</form>
+
+<form class="hidden photo-form" action="/changephoto" method="post">
+  <label>Choose your avitar</label><br>
+  <div class="grid">
+
+    <div class="">
+      <img src="/avitars/dog.png" alt="">
+      <input type="radio" name="photo" value="dog">
+    </div>
+
+    <div class="">
+      <img src="/avitars/gorilla.png" alt="">
+      <input type="radio" name="photo" value="gorilla">
+    </div>
+
+    <div class="">
+      <img src="/avitars/fox.png" alt="">
+      <input type="radio" name="photo" value="fox">
+    </div>
+
+    <div class="">
+      <img src="/avitars/cat.png" alt="">
+      <input type="radio" name="photo" value="cat">
+    </div>
+
+    <div class="">
+      <img src="/avitars/koala.png" alt="">
+      <input type="radio" name="photo" value="koala">
+    </div>
+
+    <div class="">
+      <img src="/avitars/lion.png" alt="">
+      <input type="radio" name="photo" value="lion">
+    </div>
+
+    <div class="">
+      <img src="/avitars/tiger.png" alt="">
+      <input type="radio" name="photo" value="tiger">
+    </div>
+
+    <div class="">
+      <img src="/avitars/bunny.png" alt="">
+      <input type="radio" name="photo" value="bunny">
+    </div>
+
+  </div> <br><br>
+  <input type="submit"value="Save Changes">
+  <button type="button" name="cancel">Cancel</button>
+</form>
+
+</div>
+
+<script src="/settings.js" charset="utf-8"></script>
