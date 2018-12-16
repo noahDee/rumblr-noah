@@ -134,7 +134,7 @@ end
 post "/changephoto" do
   user = User.find_by(id: session[:user_id])
   user.update(photo: params['photo'])
-  redirect "/"
+  redirect "/profile"
 end
 
 post "/addtags" do

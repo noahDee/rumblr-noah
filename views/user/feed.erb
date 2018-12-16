@@ -1,7 +1,12 @@
 <%= erb :nav %>
 <% posts = Post.all %>
 <% @user = User.find_by(id: session[:user_id])%>
+<% if @user.tags !=nil %>
 <% tags = @user.tags.split(",")%>
+<% else%>
+<% tags = []%>
+<% end%>
+
 
 <div class="container">
   <div class="row">
