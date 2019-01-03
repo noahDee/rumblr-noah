@@ -4,6 +4,8 @@
 <% else%>
 <% tags = []%>
 <% end%>
+<% @recent_posts = []%>
+
 
 
 <div class="container">
@@ -31,10 +33,14 @@
     <div class="posts column">
       <h3 id="block-title"> Your Posts</h3>
       <button type="button" name="post-reveal">New Post</button>
-      <% @count = 0 %>
+
       <% Post.find_each.reverse_each do |post|%>
-      <% while @count < 20%>
-      <% if post != nil && post.user_id == session[:user_id] %>
+      <% if post.user_id == session[:user_id] %>
+      <% @recent_posts << post %>
+      <% end %>
+      <% end %>
+      
+      <% @recent_posts[0,20].each do |post|%>
       <blockquote >
         <h4><a href="/post/<%= post.id%>"><%= post.title%></a></h4>
         <% if post.content.length > 300%>
@@ -49,9 +55,6 @@
           <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
         </button>
       </blockquote>
-        <% @count = @count+1%>
-        <% end %>
-        <% end %>
         <% end %>
 
         <div class="overlay"></div>
