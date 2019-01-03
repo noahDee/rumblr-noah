@@ -32,7 +32,8 @@
       <h3 id="block-title"> Your Posts</h3>
       <button type="button" name="post-reveal">New Post</button>
       <% Post.find_each.reverse_each do |post|%>
-      <% 20.times do%>
+      <% @count = 0 %>
+      <% while @count < 20%>
       <% if post != nil && post.user_id == session[:user_id] %>
       <blockquote >
         <h4><a href="/post/<%= post.id%>"><%= post.title%></a></h4>
@@ -48,6 +49,7 @@
           <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
         </button>
       </blockquote>
+        <% @count = @count+1%>
         <% end %>
         <% end %>
         <% end %>
