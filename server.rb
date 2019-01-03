@@ -47,7 +47,7 @@ post "/signup" do
   photo = params['photo']
   tags = params['tags']
 
-  @user = User.new(name: name, username: username, email: email, birthdate: birthdate, password: password, photo: photo, :tags tags)
+  @user = User.new(name: name, username: username, email: email, birthdate: birthdate, password: password, photo: photo, tags: tags)
   @user.save
   session[:user_id] = @user.id
 
