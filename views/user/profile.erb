@@ -31,8 +31,8 @@
     <div class="posts column">
       <h3 id="block-title"> Your Posts</h3>
       <button type="button" name="post-reveal">New Post</button>
-      <% Post.find_each.reverse_each do |post|%>
       <% @count = 0 %>
+      <% Post.find_each.reverse_each do |post|%>
       <% while @count < 20%>
       <% if post != nil && post.user_id == session[:user_id] %>
       <blockquote >
