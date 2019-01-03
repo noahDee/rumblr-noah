@@ -31,6 +31,7 @@
     <div class="posts column">
       <h3 id="block-title"> Your Posts</h3>
       <button type="button" name="post-reveal">New Post</button>
+      <% 20.times do%>
       <% Post.find_each.reverse_each do |post|%>
       <% if post != nil && post.user_id == session[:user_id] %>
       <blockquote >
@@ -47,6 +48,7 @@
           <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
         </button>
       </blockquote>
+        <% end %>
         <% end %>
         <% end %>
 

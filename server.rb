@@ -128,7 +128,7 @@ end
 post "/settings" do
   user = User.find(session[:user_id])
   user.destroy
-  redirect "/"
+  redirect "/profile"
 end
 
 post "/changephoto" do
