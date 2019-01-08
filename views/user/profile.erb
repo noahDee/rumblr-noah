@@ -39,7 +39,7 @@
       <% @recent_posts << post %>
       <% end %>
       <% end %>
-      
+
       <% @recent_posts[0,20].each do |post|%>
       <blockquote >
         <h4><a href="/post/<%= post.id%>"><%= post.title%></a></h4>
