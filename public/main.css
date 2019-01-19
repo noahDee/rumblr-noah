@@ -36,6 +36,7 @@ html {
   width: 10%;
   background-color: #D6D5B3;
   padding: 20px 10px 20px 10px !important;
+  overflow-x: auto !important;
 }
 
 .posts {
@@ -51,6 +52,8 @@ html {
   height: 400px;
   background-color: #D6D5B3;
   padding: 20px 10px 20px 10px !important;
+  overflow-x: auto !important;
+
 }
 
 .avitar {
