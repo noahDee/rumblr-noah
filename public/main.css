@@ -105,6 +105,24 @@ nav {
   margin: 0 !important;
 }
 
+.search {
+  margin-top: 1% !important;
+  /* width: 5%; */
+}
+
+form > input[type=search] {
+  width: 50%;
+}
+
+form > button[type=submit] {
+  margin-top: 2%;
+}
+
+.column > ul {
+  margin-top: 1% !important;
+  margin-left: 5%;
+}
+
 nav > div > div> input {
   width: 75% !important;
   margin: 0 !important;
