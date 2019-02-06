@@ -110,7 +110,7 @@ nav {
   /* width: 5%; */
 }
 
-form > input[type=search] {
+form > input[name=search] {
   width: 50%;
 }
 

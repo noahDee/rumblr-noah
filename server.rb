@@ -59,6 +59,7 @@ get "/profile" do
     redirect "/"
   else
   @user = User.find_by(id: session[:user_id])
+  p params["search"]
   erb:'/user/profile'
 end
 end
@@ -110,6 +111,11 @@ get "/tag/:tag" do
     end
   end
   erb :'/user/tag'
+end
+
+post "/tag" do
+  @tag = params["search"]
+  redirect "/tag/#{@tag}"
 end
 
 post "/comment" do
