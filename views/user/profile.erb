@@ -39,7 +39,7 @@
       <h3 id="block-title"> Your Posts</h3>
       <button type="button" name="post-reveal">New Post</button>
 
-      <% @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')%>
+      <% @posts = Post.where(:user_id => @user.id).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')%>
       <% @posts.each do |post|%>
       <% if post != nil %>
       <blockquote >
