@@ -19,13 +19,16 @@
         <a href="/tag/<%= tag%>"><%= tag%></a>
         <% end%>
       </p>
+
     </div>
     <div class="column blank">
 
     </div>
     <div class="column feed-column">
       <h1>Post Feed</h1>
-      <% posts.reverse_each do |post|%>
+      <%# <% @posts = Post.paginate(:page => params[:page], :per_page => 10, :order=> 'created_at DESC')%> 
+      <% @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')%>
+      <% @posts.each do |post|%>
       <% if post != nil %>
       <blockquote >
         <h4><a href="/post/<%= post.id%>"><%= post.title%></a></h4>
@@ -40,8 +43,11 @@
           <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
         </button>
       </blockquote>
-        <% end %>
-        <% end %>
+      <% end %>
+      <% end%>
+      <%= will_paginate @posts %>
+      <%# <% posts.reverse_each do |post|%>
+        <%# <% end %>
 
         <div class="overlay"></div>
         <div class="pop-up">

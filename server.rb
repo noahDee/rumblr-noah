@@ -1,5 +1,8 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 enable :sessions
 
 if ENV['RACK_ENV']
@@ -87,6 +90,7 @@ get "/feed" do
   if session[:user_id] == nil
     redirect "/"
   end
+
   erb :'/user/feed'
 end
 
