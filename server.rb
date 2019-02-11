@@ -116,8 +116,10 @@ get "/tag/:tag" do
   erb :'/user/tag'
 end
 
+
 post "/tag" do
   @tag = params["search"]
+  @tag.gsub!(' ', '%20')
   redirect "/tag/#{@tag}"
 end
 
