@@ -11,7 +11,7 @@
 <div class="container">
   <div class="row">
     <div class="column user-column">
-      <img class="avitar"src="<%= "/avitars/#{@user.photo}.png"%>" alt="">
+      <img class="avatar"src="<%= "/avatars/#{@user.photo}.png"%>" alt="">
       <h4><%= @user.username%></h4>
       <p>Posts: <br> <%= @user.posts_count%></p>
       <p>Tags you follow: <br>
@@ -26,7 +26,7 @@
     </div>
     <div class="column feed-column">
       <h1>Post Feed</h1>
-      <%# <% @posts = Post.paginate(:page => params[:page], :per_page => 10, :order=> 'created_at DESC')%> 
+      <%# <% @posts = Post.paginate(:page => params[:page], :per_page => 10, :order=> 'created_at DESC')%>
       <% @posts = Post.paginate(:page => params[:page], :per_page => 10).order('created_at DESC')%>
       <% @posts.each do |post|%>
       <% if post != nil %>
@@ -36,12 +36,15 @@
         <p id="post-content"><%="#{post.content[0,293]}..."%></p>
         <% else%>
         <p id="post-content"><%="#{post.content}"%></p>
-        <% end%>        <% owner = User.find_by(id: post.user_id)%>
-        <cite><%= "#{owner.username},#{post.created_at.to_s}" %></cite>
-        <cite><%= "Post ID:#{post.id}" %></cite>
+        <% end%>
+        <% owner = User.find_by(id: post.user_id)%>
+        <cite><%= "#{owner.username},#{post.created_at.strftime('%b %d, %C%y')}"%></cite>
+        <cite><%= "Post ID:#{post.id}"%></cite>
+        <%# if post.user_id == @user.id%>
         <button id="<%= post.user_id%>" class="options-btn"type="button" name="button">
           <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
         </button>
+        <%# end%>
       </blockquote>
       <% end %>
       <% end%>

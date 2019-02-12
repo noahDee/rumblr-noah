@@ -17,7 +17,7 @@
 
 <div class="container">
   <div class="profile-photo">
-    <img id= "photo" src=<%= "/avitars/#{@user.photo}.png"%> alt="">
+    <img id= "photo" src=<%= "/avatars/#{@user.photo}.png"%> alt="">
     <h1><%= @user.username%></h1>
   </div>
   <div class="row profile-row">
@@ -50,14 +50,17 @@
         <p id="post-content"><%="#{post.content}"%></p>
         <% end%>
         <% owner = User.find_by(id: post.user_id)%>
-        <cite><%= "#{owner.username},#{post.created_at.to_s}" %></cite>
+        <cite><%= "#{owner.username},#{post.created_at.strftime('%b %d, %C%y')}" %></cite>
         <cite><%= "Post ID:#{post.id}" %></cite>
+        <% if post.user_id == @user.id%>
         <button class="options-btn"type="button" name="button">
           <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
         </button>
+        <% end%>
       </blockquote>
         <% end %>
         <% end %>
+        <%= will_paginate @posts%>
 
         <div class="overlay"></div>
         <div class="pop-up">

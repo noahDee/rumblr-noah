@@ -12,6 +12,11 @@ html {
   display: none;
 }
 
+.demo-btn {
+visibility: visible;
+margin-left: 81%;
+}
+
 .grid {
   display: grid!important;
   grid-template: repeat(2, 200px) / repeat(4, 200px)!important;
@@ -34,6 +39,7 @@ html {
 .bio {
   border: 2px solid black;
   width: 10%;
+  height: 60%;
   background-color: #D6D5B3;
   padding: 20px 10px 20px 10px !important;
   overflow-x: auto !important;
@@ -55,7 +61,7 @@ html {
 
 .user-column {
   border: 2px solid black;
-  width: 10%;
+  width: 15%;
   height: 400px;
   background-color: #D6D5B3;
   padding: 20px 10px 20px 10px !important;
@@ -63,7 +69,7 @@ html {
 
 }
 
-.avitar {
+.avatar {
   border: 2px solid black !important;
   height: 100px;
   width: 100px;
@@ -73,7 +79,7 @@ html {
 .feed-column {
   border: 2px solid black;
   width: 65%;
-  margin-right: 15%;
+  margin-right: 10%;
   background-color: #D6D5B3;
   padding: 20px 10px 20px 10px !important;
 }
@@ -89,12 +95,21 @@ ul {
   margin: 0 !important;
 }
 
-ul > li {
+.column > ul > li {
   list-style: none;
   display: inline;
-  padding: 0px 40px 0px 40px;
+  /* padding: 0px 40px 0px 40px; */
+  padding: 0px 5% 0px 5%;
   margin: 0 !important;
 }
+
+/* @media only screen and (max-width: 1150px) {
+  .column > ul > li {
+    padding: 0px 1% 0px 1% !important;
+  }
+} */
+
+
 
 ul > li > button {
   margin:0 0 2px 0 !important;
@@ -194,7 +209,7 @@ footer {
 }
 
 .pop-up button {
-  margin-top : 30px;
+  margin-top : 6px;
 }
 
 .overlay {
@@ -228,7 +243,7 @@ footer {
 }
 
 .pop-up-1 button {
-  margin-top : 30px;
+  margin-top : 6px;
 }
 
 .overlay-1 {
